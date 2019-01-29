@@ -7,7 +7,6 @@ This package aims to make it easy to use oversampling in image classification da
 Datasets with an imbalance between the number of data points per category are pretty common.<br>
 This package converts data into a format that works well with Fastai's ImageDataBunch class.
 <br>
-It is assumed that the train folder has all the image files in folders of their respective categories. (Although you can also use the methods in the Oversampler class on data that has all images in a single folder with a csv file containing the labels).
 To show just how easy it is, we start with a few lines of code:
 ```
 from Oversampler import *
@@ -34,4 +33,8 @@ Here is what is assumed about the structure of the `PATH_TO_DATA` folder:<br>
 - In this case, the `PATH_TO_DATA` contains 4 folders of names `cat1`, `cat2`, `cat3`, and `cat4`.
 - Each folder contains images only of that category.
 - `PATH_TO_DATA` contains no other files.
-
+---
+It is possible to achieve better results with a classifer using this method only if one uses Data Augmentation. The idea is that images in categories with less data will be used for training the classifer more number of times with each image augmented before feeding to the classifier.<br>
+---
+---
+Hope this helps!
