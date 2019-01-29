@@ -94,15 +94,15 @@ class Oversampler(FolderToDf):
         """
         return self.df.categories.value_counts()
     
-    def split_val_by_pct(self, pct=0.2, categories_col='categories', cats_to_pct=None, oversample=False):
+    def split_val_by_pct(self, valid_pct=0.2, categories_col='categories', cats_to_pct=None, oversample=False):
         """
         Splits the data into training and validation sets in the following way:
-        - First splits each category into vaid and train using pct
+        - First splits each category into vaid and train using valid_pct
           (to ensure representation of each class in the validation set)
         - Collates the results into train and valid dataframes.
         - Oversamples the train dataframe if cats_to_pct is passed
         Parameters:
-        pct: Percentage of data to be (randomly) used as validation data.
+        valid_pct: Percentage of data to be (randomly) used as validation data.
         categories_col: Name of the column with labels in dataframe
         cate_to_pct: To be passed to self.oversample
         oversample: Set to True if oversampling happens. You do not need to pass this argument.
@@ -111,17 +111,17 @@ class Oversampler(FolderToDf):
             oversample = True
         valid_df = pd.DataFrame()
         for cat in set(self.df[categories_col]):
-            valid_df = valid_df.append(self.df[self.df[categories_col] == cat].sample(frac=pct))
+            valid_df = valid_df.append(self.df[self.df[categories_col] == cat].sample(frac=valid_pct))
         return (self.oversample(self.df.drop(index=valid_df.index), cats_to_pct, do=oversample).sample(frac=1),
                 valid_df)
     
-    def df_val_train_by_pct(self, pct=0.2, categories_col='categories', oversample=False, cats_to_pct=None):
+    def df_val_train_by_pct(self, valid_pct=0.2, categories_col='categories', oversample=False, cats_to_pct=None):
         """
         returns a single DataFrame.
         The train dataframe returned from self.split_val_by_pct is returned is appended to the
         valid dataframe.
         """
-        trn, val = self.split_val_by_pct(pct, categories_col, cats_to_pct, oversample)
+        trn, val = self.split_val_by_pct(valid_pct, categories_col, cats_to_pct, oversample)
         self.df_oversampled = val.append(trn)
         self.len_val = len(val)
         self.len_trn = len(trn)
@@ -153,11 +153,11 @@ class Oversampler(FolderToDf):
                 sample = sample.append(df[df[categories_col] == i].sample(frac=frac))
                 amt -= frac
         return df.append(sample)
-    def copy_to_output_with_csv(self, oversample=False):
+    def copy_to_output_with_csv(self, out=None, action='copy', oversample=False):
         """
         Same as `copy_to_output` except that it overwrites `df` to be the oversampled DataFrame
         """
         if oversample == True:
             self.df = self.df_oversampled
-        self.copy_to_output()
+        self.copy_to_output(out=out, action=action)
         print('Validation indexes are the first',self.len_val,'indexes in the labels.csv file')

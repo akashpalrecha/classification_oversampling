@@ -1,0 +1,25 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	0.0.0	/75ba24d/
+FolderToDf	../Oversampler.py	/^class FolderToDf(object):$/;"	kind:class	line:8
+Oversampler	../Oversampler.py	/^class Oversampler(FolderToDf):$/;"	kind:class	line:87
+Oversampler.py	../Oversampler.py	1;"	kind:file	line:1
+__init__	../Oversampler.py	/^    def __init__(self, PATH, OUT):$/;"	kind:member	line:88
+__init__	../Oversampler.py	/^    def __init__(self, PATH, OUT=''):$/;"	kind:member	line:9
+cat_to_files	../Oversampler.py	/^    def cat_to_files(self, PATH):$/;"	kind:member	line:39
+category_counts	../Oversampler.py	/^    def category_counts(self):$/;"	kind:member	line:91
+copy_to_output	../Oversampler.py	/^    def copy_to_output(self, out=None, action='copy'):$/;"	kind:member	line:69
+copy_to_output_with_csv	../Oversampler.py	/^    def copy_to_output_with_csv(self, oversample=False):$/;"	kind:member	line:156
+df_val_train_by_pct	../Oversampler.py	/^    def df_val_train_by_pct(self, pct=0.2, categories_col='categories', oversample=False, cats_t/;"	kind:member	line:118
+file_dict_to_df	../Oversampler.py	/^    def file_dict_to_df(self, file_dict):$/;"	kind:member	line:48
+get_cat_files	../Oversampler.py	/^    def get_cat_files(self, PATH, cat):$/;"	kind:member	line:33
+get_cats	../Oversampler.py	/^    def get_cats(self, PATH):$/;"	kind:member	line:21
+get_df_from_folder	../Oversampler.py	/^    def get_df_from_folder(self, PATH):$/;"	kind:member	line:62
+np	../Oversampler.py	/^import numpy as np$/;"	kind:namespace	line:1
+oversample	../Oversampler.py	/^    def oversample(self, df, cats_to_pct={}, categories_col='categories', do=True):$/;"	kind:member	line:130
+pd	../Oversampler.py	/^import pandas as pd$/;"	kind:namespace	line:3
+split_val_by_pct	../Oversampler.py	/^    def split_val_by_pct(self, pct=0.2, categories_col='categories', cats_to_pct=None, oversampl/;"	kind:member	line:97
