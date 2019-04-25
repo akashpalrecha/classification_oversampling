@@ -1,8 +1,5 @@
 # Oversampling Image classification datasets for Fastai - a simple approach
 
->This README is INCOMPLETE <br>
->It will be updated within a week from now
-
 This package aims to make it easy to use oversampling in image classification datasets.
 Datasets with an imbalance between the number of data points per category are pretty common.<br>
 This package converts data into a format that works well with Fastai's ImageDataBunch class.
